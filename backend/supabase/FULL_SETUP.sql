@@ -799,7 +799,7 @@ INSERT INTO public.products (
 ) VALUES
   -- Category 1: Fruits & Vegetables
   (
-    'p1000000-0000-0000-0000-000000000001',
+    'd1000000-0000-0000-0000-000000000001',
     'Shimla Fresh Apples (Royal Delicious)',
     'shimla-fresh-apples-royal-delicious',
     'FV-APP-001',
@@ -816,7 +816,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000002',
+    'd1000000-0000-0000-0000-000000000002',
     'Robusta Ripe Bananas',
     'robusta-ripe-bananas',
     'FV-BAN-002',
@@ -833,7 +833,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000003',
+    'd1000000-0000-0000-0000-000000000003',
     'Hybrid Red Tomatoes',
     'hybrid-red-tomatoes',
     'FV-TOM-003',
@@ -850,7 +850,7 @@ INSERT INTO public.products (
     false
   ),
   (
-    'p1000000-0000-0000-0000-000000000004',
+    'd1000000-0000-0000-0000-000000000004',
     'Fresh Tender Baby Spinach (Palak)',
     'fresh-tender-baby-spinach-palak',
     'FV-SPN-004',
@@ -869,7 +869,7 @@ INSERT INTO public.products (
 
   -- Category 2: Dairy & Bakery
   (
-    'p1000000-0000-0000-0000-000000000005',
+    'd1000000-0000-0000-0000-000000000005',
     'Amul Pasteurized Salted Butter',
     'amul-pasteurized-salted-butter',
     'DB-AMB-001',
@@ -886,7 +886,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000006',
+    'd1000000-0000-0000-0000-000000000006',
     'Nandini GoodLife Toned Milk',
     'nandini-goodlife-toned-milk',
     'DB-MLK-002',
@@ -903,7 +903,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000007',
+    'd1000000-0000-0000-0000-000000000007',
     'Amul Fresh Malai Paneer',
     'amul-fresh-malai-paneer',
     'DB-PAN-003',
@@ -920,7 +920,7 @@ INSERT INTO public.products (
     false
   ),
   (
-    'p1000000-0000-0000-0000-000000000008',
+    'd1000000-0000-0000-0000-000000000008',
     'Modern 100% Whole Wheat Brown Bread',
     'modern-100-whole-wheat-brown-bread',
     'DB-BRD-004',
@@ -939,7 +939,7 @@ INSERT INTO public.products (
 
   -- Category 3: Snacks & Munchies
   (
-    'p1000000-0000-0000-0000-000000000009',
+    'd1000000-0000-0000-0000-000000000009',
     'Lays Indias Magic Masala Potato Chips',
     'lays-indias-magic-masala-potato-chips',
     'SN-LAY-001',
@@ -956,7 +956,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000010',
+    'd1000000-0000-0000-0000-000000000010',
     'Haldirams Nagpur Aloo Bhujia',
     'haldirams-nagpur-aloo-bhujia',
     'SN-HAL-002',
@@ -973,7 +973,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000011',
+    'd1000000-0000-0000-0000-000000000011',
     'Act II Butter Lovers Microwave Popcorn',
     'act-ii-butter-lovers-microwave-popcorn',
     'SN-ACT-003',
@@ -992,7 +992,7 @@ INSERT INTO public.products (
 
   -- Category 4: Cold Drinks & Juices
   (
-    'p1000000-0000-0000-0000-000000000012',
+    'd1000000-0000-0000-0000-000000000012',
     'Coca-Cola Original Taste Can',
     'coca-cola-original-taste-can',
     'BEV-COK-001',
@@ -1009,7 +1009,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000013',
+    'd1000000-0000-0000-0000-000000000013',
     'Real Fruit Power Alphonso Mango Juice',
     'real-fruit-power-alphonso-mango-juice',
     'BEV-REA-002',
@@ -1026,7 +1026,7 @@ INSERT INTO public.products (
     false
   ),
   (
-    'p1000000-0000-0000-0000-000000000014',
+    'd1000000-0000-0000-0000-000000000014',
     'Raw Pressery 100% Tender Coconut Water',
     'raw-pressery-100-tender-coconut-water',
     'BEV-RAW-003',
@@ -1045,7 +1045,7 @@ INSERT INTO public.products (
 
   -- Category 5: Atta, Rice & Dal
   (
-    'p1000000-0000-0000-0000-000000000015',
+    'd1000000-0000-0000-0000-000000000015',
     'Aashirvaad Shudh Chakki Whole Wheat Atta',
     'aashirvaad-shudh-chakki-whole-wheat-atta',
     'ST-AAS-001',
@@ -1062,7 +1062,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000016',
+    'd1000000-0000-0000-0000-000000000016',
     'India Gate Feast Rozzana Basmati Rice',
     'india-gate-feast-rozzana-basmati-rice',
     'ST-ING-002',
@@ -1079,7 +1079,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000017',
+    'd1000000-0000-0000-0000-000000000017',
     'Tata Sampann Unpolished Toor Dal',
     'tata-sampann-unpolished-toor-dal',
     'ST-TAT-003',
@@ -1098,7 +1098,7 @@ INSERT INTO public.products (
 
   -- Category 6: Masala & Spices
   (
-    'p1000000-0000-0000-0000-000000000018',
+    'd1000000-0000-0000-0000-000000000018',
     'Catch Turmeric Powder (Haldi)',
     'catch-turmeric-powder-haldi',
     'SP-CAT-001',
@@ -1115,7 +1115,7 @@ INSERT INTO public.products (
     false
   ),
   (
-    'p1000000-0000-0000-0000-000000000019',
+    'd1000000-0000-0000-0000-000000000019',
     'Everest Shahi Garam Masala',
     'everest-shahi-garam-masala',
     'SP-EVE-002',
@@ -1132,7 +1132,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000020',
+    'd1000000-0000-0000-0000-000000000020',
     'Tata Salt Vacuum Evaporated Iodized Salt',
     'tata-salt-vacuum-evaporated-iodized-salt',
     'SP-TAT-003',
@@ -1151,7 +1151,7 @@ INSERT INTO public.products (
 
   -- Category 7: Personal Care
   (
-    'p1000000-0000-0000-0000-000000000021',
+    'd1000000-0000-0000-0000-000000000021',
     'Dettol Original Germ Protection Liquid Handwash Refill',
     'dettol-original-germ-protection-liquid-handwash-refill',
     'PC-DET-001',
@@ -1168,7 +1168,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000022',
+    'd1000000-0000-0000-0000-000000000022',
     'Colgate MaxFresh Spicy Fresh Red Gel Toothpaste',
     'colgate-maxfresh-spicy-fresh-red-gel-toothpaste',
     'PC-COL-002',
@@ -1187,7 +1187,7 @@ INSERT INTO public.products (
 
   -- Category 8: Household Essentials
   (
-    'p1000000-0000-0000-0000-000000000023',
+    'd1000000-0000-0000-0000-000000000023',
     'Vim Lemon Dishwash Liquid Gel',
     'vim-lemon-dishwash-liquid-gel',
     'HH-VIM-001',
@@ -1204,7 +1204,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000024',
+    'd1000000-0000-0000-0000-000000000024',
     'Surf Excel Matic Top Load Detergent Powder',
     'surf-excel-matic-top-load-detergent-powder',
     'HH-SRF-002',
@@ -1223,7 +1223,7 @@ INSERT INTO public.products (
 
   -- Category 9: Baby Care
   (
-    'p1000000-0000-0000-0000-000000000025',
+    'd1000000-0000-0000-0000-000000000025',
     'Pampers All Round Protection Pants (Medium)',
     'pampers-all-round-protection-pants-medium',
     'BC-PAM-001',
@@ -1240,7 +1240,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000026',
+    'd1000000-0000-0000-0000-000000000026',
     'Johnsons Baby Gentle Wet Wipes',
     'johnsons-baby-gentle-wet-wipes',
     'BC-JOH-002',
@@ -1259,7 +1259,7 @@ INSERT INTO public.products (
 
   -- Category 10: Chocolates & Sweets
   (
-    'p1000000-0000-0000-0000-000000000027',
+    'd1000000-0000-0000-0000-000000000027',
     'Cadbury Dairy Milk Silk Chocolate Bar',
     'cadbury-dairy-milk-silk-chocolate-bar',
     'SW-CAD-001',
@@ -1276,7 +1276,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000028',
+    'd1000000-0000-0000-0000-000000000028',
     'Ferrero Rocher Hazelnut Pralines Gift Box',
     'ferrero-rocher-hazelnut-pralines-gift-box',
     'SW-FER-002',
@@ -1293,7 +1293,7 @@ INSERT INTO public.products (
     true
   ),
   (
-    'p1000000-0000-0000-0000-000000000029',
+    'd1000000-0000-0000-0000-000000000029',
     'Haldirams Gulab Jamun Tin',
     'haldirams-gulab-jamun-tin',
     'SW-HAL-003',

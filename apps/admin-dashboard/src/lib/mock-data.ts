@@ -66,7 +66,7 @@ export const MOCK_CATEGORIES: Category[] = [
 
 export const MOCK_PRODUCTS: Product[] = [
   {
-    id: 'p1000000-0000-0000-0000-000000000001',
+    id: 'd1000000-0000-0000-0000-000000000001',
     name: 'Shimla Fresh Apples (Royal Delicious)',
     slug: 'shimla-fresh-apples-royal-delicious',
     sku: 'FV-APP-001',
@@ -85,7 +85,7 @@ export const MOCK_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000002',
+    id: 'd1000000-0000-0000-0000-000000000002',
     name: 'Robusta Ripe Bananas',
     slug: 'robusta-ripe-bananas',
     sku: 'FV-BAN-002',
@@ -104,7 +104,7 @@ export const MOCK_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000005',
+    id: 'd1000000-0000-0000-0000-000000000005',
     name: 'Amul Pasteurized Salted Butter',
     slug: 'amul-pasteurized-salted-butter',
     sku: 'DB-AMB-001',
@@ -123,7 +123,7 @@ export const MOCK_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000006',
+    id: 'd1000000-0000-0000-0000-000000000006',
     name: 'Nandini GoodLife Toned Milk',
     slug: 'nandini-goodlife-toned-milk',
     sku: 'DB-MLK-002',
@@ -142,7 +142,7 @@ export const MOCK_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000009',
+    id: 'd1000000-0000-0000-0000-000000000009',
     name: 'Lays Indias Magic Masala Potato Chips',
     slug: 'lays-indias-magic-masala-potato-chips',
     sku: 'SN-LAY-001',
@@ -161,7 +161,7 @@ export const MOCK_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000012',
+    id: 'd1000000-0000-0000-0000-000000000012',
     name: 'Coca-Cola Original Taste Can',
     slug: 'coca-cola-original-taste-can',
     sku: 'BEV-COK-001',
@@ -212,7 +212,7 @@ export const MOCK_ORDERS: Order[] = [
       {
         id: 'oi-1',
         order_id: 'o1000000-0000-0000-0000-000000000001',
-        product_id: 'p1000000-0000-0000-0000-000000000001',
+        product_id: 'd1000000-0000-0000-0000-000000000001',
         product_name_snapshot: 'Shimla Fresh Apples (Royal Delicious)',
         product_image_snapshot: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80',
         unit_label_snapshot: '4 pcs (Approx. 500-600g)',
@@ -223,7 +223,7 @@ export const MOCK_ORDERS: Order[] = [
       {
         id: 'oi-2',
         order_id: 'o1000000-0000-0000-0000-000000000001',
-        product_id: 'p1000000-0000-0000-0000-000000000006',
+        product_id: 'd1000000-0000-0000-0000-000000000006',
         product_name_snapshot: 'Nandini GoodLife Toned Milk',
         product_image_snapshot: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=600&q=80',
         unit_label_snapshot: '1 L Tetrapack',
@@ -263,7 +263,7 @@ export const MOCK_ORDERS: Order[] = [
       {
         id: 'oi-3',
         order_id: 'o1000000-0000-0000-0000-000000000002',
-        product_id: 'p1000000-0000-0000-0000-000000000005',
+        product_id: 'd1000000-0000-0000-0000-000000000005',
         product_name_snapshot: 'Amul Pasteurized Salted Butter',
         product_image_snapshot: 'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=600&q=80',
         unit_label_snapshot: '500 g',
@@ -303,7 +303,7 @@ export const MOCK_ORDERS: Order[] = [
       {
         id: 'oi-4',
         order_id: 'o1000000-0000-0000-0000-000000000003',
-        product_id: 'p1000000-0000-0000-0000-000000000012',
+        product_id: 'd1000000-0000-0000-0000-000000000012',
         product_name_snapshot: 'Coca-Cola Original Taste Can',
         product_image_snapshot: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80',
         unit_label_snapshot: '300 ml Can',

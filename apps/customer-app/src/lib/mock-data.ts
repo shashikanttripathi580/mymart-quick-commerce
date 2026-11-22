@@ -79,7 +79,7 @@ export const MOCK_CUSTOMER_CATEGORIES: Category[] = [
 
 export const MOCK_CUSTOMER_PRODUCTS: Product[] = [
   {
-    id: 'p1000000-0000-0000-0000-000000000001',
+    id: 'd1000000-0000-0000-0000-000000000001',
     name: 'Shimla Fresh Apples (Royal Delicious)',
     slug: 'shimla-fresh-apples-royal-delicious',
     sku: 'FV-APP-001',
@@ -98,7 +98,7 @@ export const MOCK_CUSTOMER_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000002',
+    id: 'd1000000-0000-0000-0000-000000000002',
     name: 'Robusta Ripe Bananas',
     slug: 'robusta-ripe-bananas',
     sku: 'FV-BAN-002',
@@ -117,7 +117,7 @@ export const MOCK_CUSTOMER_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000003',
+    id: 'd1000000-0000-0000-0000-000000000003',
     name: 'Hybrid Red Tomatoes',
     slug: 'hybrid-red-tomatoes',
     sku: 'FV-TOM-003',
@@ -136,7 +136,7 @@ export const MOCK_CUSTOMER_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000005',
+    id: 'd1000000-0000-0000-0000-000000000005',
     name: 'Amul Pasteurized Salted Butter',
     slug: 'amul-pasteurized-salted-butter',
     sku: 'DB-AMB-001',
@@ -155,7 +155,7 @@ export const MOCK_CUSTOMER_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000006',
+    id: 'd1000000-0000-0000-0000-000000000006',
     name: 'Nandini GoodLife Toned Milk',
     slug: 'nandini-goodlife-toned-milk',
     sku: 'DB-MLK-002',
@@ -174,7 +174,7 @@ export const MOCK_CUSTOMER_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000009',
+    id: 'd1000000-0000-0000-0000-000000000009',
     name: 'Lays Indias Magic Masala Chips',
     slug: 'lays-indias-magic-masala-potato-chips',
     sku: 'SN-LAY-001',
@@ -193,7 +193,7 @@ export const MOCK_CUSTOMER_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000012',
+    id: 'd1000000-0000-0000-0000-000000000012',
     name: 'Coca-Cola Original Taste Can',
     slug: 'coca-cola-original-taste-can',
     sku: 'BEV-COK-001',
@@ -212,7 +212,7 @@ export const MOCK_CUSTOMER_PRODUCTS: Product[] = [
     updated_at: new Date().toISOString(),
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000027',
+    id: 'd1000000-0000-0000-0000-000000000027',
     name: 'Cadbury Dairy Milk Silk Chocolate Bar',
     slug: 'cadbury-dairy-milk-silk-chocolate-bar',
     sku: 'SW-CAD-001',

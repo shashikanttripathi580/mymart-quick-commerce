@@ -124,7 +124,7 @@ const initialCategories = [
 const initialProducts = [
   // Fruits & Vegetables
   {
-    id: 'p1000000-0000-0000-0000-000000000001',
+    id: 'd1000000-0000-0000-0000-000000000001',
     name: 'Shimla Fresh Apples (Royal Delicious)',
     slug: 'shimla-fresh-apples-royal-delicious',
     sku: 'FV-APP-001',
@@ -143,7 +143,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000002',
+    id: 'd1000000-0000-0000-0000-000000000002',
     name: 'Robusta Ripe Bananas',
     slug: 'robusta-ripe-bananas',
     sku: 'FV-BAN-002',
@@ -162,7 +162,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000003',
+    id: 'd1000000-0000-0000-0000-000000000003',
     name: 'Hybrid Red Tomatoes',
     slug: 'hybrid-red-tomatoes',
     sku: 'FV-TOM-003',
@@ -181,7 +181,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000004',
+    id: 'd1000000-0000-0000-0000-000000000004',
     name: 'Nashik Fresh Red Onions',
     slug: 'nashik-fresh-red-onions',
     sku: 'FV-ONI-004',
@@ -200,7 +200,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000005',
+    id: 'd1000000-0000-0000-0000-000000000005',
     name: 'Farm Fresh Potatoes (Jyoti)',
     slug: 'farm-fresh-potatoes-jyoti',
     sku: 'FV-POT-005',
@@ -221,7 +221,7 @@ const initialProducts = [
 
   // Dairy & Bakery
   {
-    id: 'p1000000-0000-0000-0000-000000000006',
+    id: 'd1000000-0000-0000-0000-000000000006',
     name: 'Amul Taaza Homogenised Toned Milk',
     slug: 'amul-taaza-toned-milk',
     sku: 'DB-MIL-006',
@@ -240,7 +240,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000007',
+    id: 'd1000000-0000-0000-0000-000000000007',
     name: 'Amul Pasteurized Salted Butter',
     slug: 'amul-salted-butter',
     sku: 'DB-BUT-007',
@@ -259,7 +259,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000008',
+    id: 'd1000000-0000-0000-0000-000000000008',
     name: 'Mother Dairy Fresh Malai Paneer',
     slug: 'mother-dairy-fresh-malai-paneer',
     sku: 'DB-PAN-008',
@@ -278,7 +278,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000009',
+    id: 'd1000000-0000-0000-0000-000000000009',
     name: 'Britannia 100% Whole Wheat Bread',
     slug: 'britannia-whole-wheat-bread',
     sku: 'DB-BRD-009',
@@ -299,7 +299,7 @@ const initialProducts = [
 
   // Snacks & Munchies
   {
-    id: 'p1000000-0000-0000-0000-000000000010',
+    id: 'd1000000-0000-0000-0000-000000000010',
     name: "Lay's India's Magic Masala Potato Chips",
     slug: 'lays-indias-magic-masala-chips',
     sku: 'SN-LAY-010',
@@ -318,7 +318,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000011',
+    id: 'd1000000-0000-0000-0000-000000000011',
     name: 'Haldiram’s Nagpur Aloo Bhujia',
     slug: 'haldirams-aloo-bhujia',
     sku: 'SN-HAL-011',
@@ -339,7 +339,7 @@ const initialProducts = [
 
   // Cold Drinks
   {
-    id: 'p1000000-0000-0000-0000-000000000012',
+    id: 'd1000000-0000-0000-0000-000000000012',
     name: 'Coca-Cola Zero Sugar Soda Can',
     slug: 'coca-cola-zero-sugar-can',
     sku: 'CD-COK-012',
@@ -360,7 +360,7 @@ const initialProducts = [
 
   // Atta, Rice & Dal
   {
-    id: 'p1000000-0000-0000-0000-000000000013',
+    id: 'd1000000-0000-0000-0000-000000000013',
     name: 'Aashirvaad Shudh Chakki Whole Wheat Atta',
     slug: 'aashirvaad-shudh-chakki-atta-5kg',
     sku: 'AR-AAS-013',
@@ -379,7 +379,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000014',
+    id: 'd1000000-0000-0000-0000-000000000014',
     name: 'Daawat Rozana Super Basmati Rice',
     slug: 'daawat-rozana-super-basmati-rice',
     sku: 'AR-DAA-014',
@@ -398,7 +398,7 @@ const initialProducts = [
     updated_at: new Date().toISOString()
   },
   {
-    id: 'p1000000-0000-0000-0000-000000000015',
+    id: 'd1000000-0000-0000-0000-000000000015',
     name: 'Tata Sampann Unpolished Toor Dal',
     slug: 'tata-sampann-unpolished-toor-dal',
     sku: 'AR-TAT-015',
@@ -419,7 +419,7 @@ const initialProducts = [
 
   // Masala & Spices
   {
-    id: 'p1000000-0000-0000-0000-000000000016',
+    id: 'd1000000-0000-0000-0000-000000000016',
     name: 'Everest Tikhalal Chilli Powder',
     slug: 'everest-tikhalal-chilli-powder',
     sku: 'MS-EVE-016',
@@ -440,7 +440,7 @@ const initialProducts = [
 
   // Chocolates & Sweets
   {
-    id: 'p1000000-0000-0000-0000-000000000017',
+    id: 'd1000000-0000-0000-0000-000000000017',
     name: 'Cadbury Dairy Milk Silk Chocolate Bar',
     slug: 'cadbury-dairy-milk-silk-bar',
     sku: 'CS-CAD-017',
@@ -495,7 +495,7 @@ const initialOrders = [
       {
         id: 'item-001',
         order_id: 'ord-1718000001',
-        product_id: 'p1000000-0000-0000-0000-000000000001',
+        product_id: 'd1000000-0000-0000-0000-000000000001',
         product_name: 'Shimla Fresh Apples (Royal Delicious)',
         product_image_url: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80',
         unit_label: '4 pcs (Approx. 500-600g)',
@@ -506,7 +506,7 @@ const initialOrders = [
       {
         id: 'item-002',
         order_id: 'ord-1718000001',
-        product_id: 'p1000000-0000-0000-0000-000000000008',
+        product_id: 'd1000000-0000-0000-0000-000000000008',
         product_name: 'Mother Dairy Fresh Malai Paneer',
         product_image_url: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80',
         unit_label: '200 g Block',
@@ -552,7 +552,7 @@ const initialOrders = [
       {
         id: 'item-003',
         order_id: 'ord-1718000002',
-        product_id: 'p1000000-0000-0000-0000-000000000013',
+        product_id: 'd1000000-0000-0000-0000-000000000013',
         product_name: 'Aashirvaad Shudh Chakki Whole Wheat Atta',
         product_image_url: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80',
         unit_label: '5 kg Bag',
