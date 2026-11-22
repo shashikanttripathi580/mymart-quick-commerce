@@ -1,0 +1,11 @@
+{
+  "buildCommand": "npm run build:shared && npm run build:admin",
+  "outputDirectory": "apps/admin-dashboard/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

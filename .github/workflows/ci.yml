@@ -1,0 +1,35 @@
+name: MyMart CI & Quality Verification
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm --prefix packages/shared install
+          npm --prefix apps/admin-dashboard install
+
+      - name: Build Shared Package
+        run: npm run build:shared
+
+      - name: Run Test Suite (59 assertions)
+        run: npm test
+
+      - name: Build Admin Dashboard & Customer Storefront
+        run: npm run build:admin
