@@ -493,6 +493,94 @@ export async function updateOrderStatus(
   if (error) throw new Error(error.message);
 }
 
+export async function createCustomerOrder(payload: {
+  address: any;
+  items: { product: Product; quantity: number }[];
+}): Promise<Order> {
+  const subtotalPaise = payload.items.reduce(
+    (sum, item) => sum + item.product.selling_price_paise * item.quantity,
+    0
+  );
+  const deliveryFeePaise = subtotalPaise >= 19900 ? 0 : 2500;
+  const totalPaise = subtotalPaise + deliveryFeePaise;
+  const orderNumber = 'MM-' + Date.now().toString().slice(-6);
+
+  const newOrder: any = {
+    order_number: orderNumber,
+    user_id: 'd0000000-0000-0000-0000-000000000001',
+    address_snapshot: payload.address,
+    subtotal_paise: subtotalPaise,
+    delivery_fee_paise: deliveryFeePaise,
+    discount_paise: 0,
+    total_paise: totalPaise,
+    order_status: 'placed',
+    payment_status: 'pending',
+    payment_method: 'cod',
+    delivery_partner_name: null,
+    delivery_partner_phone: null,
+    estimated_delivery_minutes: 10,
+    cancellation_reason: null,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+
+  if (!shouldUseMock()) {
+    try {
+      const { data: insertedOrder, error: orderErr } = await supabase
+        .from('orders')
+        .insert(newOrder)
+        .select()
+        .single();
+
+      if (!orderErr && insertedOrder) {
+        const orderItems = payload.items.map((i) => ({
+          order_id: insertedOrder.id,
+          product_id: i.product.id,
+          product_name_snapshot: i.product.name,
+          product_image_snapshot: i.product.image_urls?.[0] || '',
+          unit_label_snapshot: i.product.unit_label || '',
+          unit_price_paise: i.product.selling_price_paise,
+          quantity: i.quantity,
+          line_total_paise: i.product.selling_price_paise * i.quantity,
+        }));
+
+        await supabase.from('order_items').insert(orderItems);
+
+        // Deduct inventory
+        for (const item of payload.items) {
+          await adjustProductStock(item.product.id, -item.quantity);
+        }
+
+        return {
+          ...insertedOrder,
+          order_items: orderItems,
+        } as Order;
+      }
+    } catch (e) {
+      console.warn('Supabase order creation fallback:', e);
+    }
+  }
+
+  // Fallback / in-memory working copy
+  const fallbackOrder: Order = {
+    ...newOrder,
+    id: 'ord-' + Date.now(),
+    order_items: payload.items.map((i, idx) => ({
+      id: 'oi-' + Date.now() + '-' + idx,
+      order_id: 'ord-' + Date.now(),
+      product_id: i.product.id,
+      product_name_snapshot: i.product.name,
+      product_image_snapshot: i.product.image_urls?.[0] || '',
+      unit_label_snapshot: i.product.unit_label || '',
+      unit_price_paise: i.product.selling_price_paise,
+      quantity: i.quantity,
+      line_total_paise: i.product.selling_price_paise * i.quantity,
+    })),
+  };
+  localOrders.unshift(fallbackOrder);
+  return fallbackOrder;
+}
+
 /* -------------------------------------------------------------------------- */
 /* STORE SETTINGS API                                                         */
 /* -------------------------------------------------------------------------- */

@@ -33,8 +33,14 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const API_BASE = 'http://localhost:5001/api';
+import {
+  getCategories,
+  getProducts,
+  getStoreSettings,
+  getOrders,
+  createCustomerOrder,
+  subscribeToOrders,
+} from '../lib/api';
 
 interface CartItem {
   product: Product;
@@ -91,9 +97,7 @@ export const CustomerStorefront: React.FC = () => {
   const { data: categories = [] } = useQuery<Category[]>({
     queryKey: ['store-categories'],
     queryFn: async () => {
-      const res = await fetch(`${API_BASE}/categories`);
-      if (!res.ok) throw new Error('Failed to load categories');
-      return res.json();
+      return await getCategories();
     },
   });
 
@@ -101,12 +105,19 @@ export const CustomerStorefront: React.FC = () => {
   const { data: products = [], isLoading: productsLoading } = useQuery<Product[]>({
     queryKey: ['store-products', selectedCategory, searchQuery],
     queryFn: async () => {
-      const params = new URLSearchParams();
-      if (selectedCategory) params.append('category_id', selectedCategory);
-      if (searchQuery) params.append('search', searchQuery);
-      const res = await fetch(`${API_BASE}/products?${params.toString()}`);
-      if (!res.ok) throw new Error('Failed to load products');
-      return res.json();
+      let prods = await getProducts();
+      if (selectedCategory) {
+        prods = prods.filter((p) => p.category_id === selectedCategory);
+      }
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        prods = prods.filter(
+          (p) =>
+            p.name.toLowerCase().includes(q) ||
+            (p.description && p.description.toLowerCase().includes(q))
+        );
+      }
+      return prods;
     },
   });
 
@@ -114,9 +125,7 @@ export const CustomerStorefront: React.FC = () => {
   const { data: settings } = useQuery({
     queryKey: ['store-settings'],
     queryFn: async () => {
-      const res = await fetch(`${API_BASE}/store-settings`);
-      if (!res.ok) throw new Error('Failed to load settings');
-      return res.json();
+      return await getStoreSettings();
     },
   });
 
@@ -124,39 +133,29 @@ export const CustomerStorefront: React.FC = () => {
   const { data: customerOrders = [], refetch: refetchOrders } = useQuery<Order[]>({
     queryKey: ['customer-orders'],
     queryFn: async () => {
-      const res = await fetch(`${API_BASE}/orders?user_id=cust-demo`);
-      if (!res.ok) return [];
-      return res.json();
+      return await getOrders();
     },
   });
 
-  // Real-Time SSE Listener for Live Order Tracking
+  // Real-Time Listener for Live Order Tracking
   useEffect(() => {
-    let es: EventSource | null = null;
-    try {
-      es = new EventSource(`${API_BASE}/events`);
-      es.addEventListener('ORDER_UPDATED', (e) => {
-        try {
-          const updated: Order = JSON.parse(e.data);
-          if (trackedOrder && trackedOrder.id === updated.id) {
-            setTrackedOrder(updated);
-            localStorage.setItem('mymart_last_order', JSON.stringify(updated));
-          }
-          refetchOrders();
-        } catch (err) {
-          console.error(err);
+    const unsubscribe = subscribeToOrders(
+      () => {
+        refetchOrders();
+      },
+      (updated: Order) => {
+        if (trackedOrder && trackedOrder.id === updated.id) {
+          setTrackedOrder(updated);
+          localStorage.setItem('mymart_last_order', JSON.stringify(updated));
         }
-      });
-      es.addEventListener('STOCK_UPDATED', () => {
-        queryClient.invalidateQueries({ queryKey: ['store-products'] });
-      });
-    } catch (e) {
-      console.warn('SSE not supported or connection error:', e);
-    }
+        refetchOrders();
+      }
+    );
+
     return () => {
-      if (es) es.close();
+      unsubscribe();
     };
-  }, [trackedOrder, refetchOrders, queryClient]);
+  }, [trackedOrder, refetchOrders]);
 
   // Cart operations
   const addToCart = (product: Product) => {
@@ -206,22 +205,10 @@ export const CustomerStorefront: React.FC = () => {
   const placeOrderMutation = useMutation({
     mutationFn: async () => {
       setOrderError(null);
-      const payload = {
-        user_id: 'cust-demo',
+      return await createCustomerOrder({
         address,
-        items: cart.map((i) => ({
-          product_id: i.product.id,
-          quantity: i.quantity,
-        })),
-      };
-      const res = await fetch(`${API_BASE}/orders`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        items: cart,
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to place order');
-      return data.order as Order;
     },
     onSuccess: (newOrder) => {
       setCart([]);
