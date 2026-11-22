@@ -1,0 +1,19 @@
+{
+  "name": "mymart-image-worker",
+  "version": "1.0.0",
+  "description": "Secure Cloudflare Worker for MyMart R2 Product Image Uploads",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.525.0",
+    "@aws-sdk/s3-request-presigner": "^3.525.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.30.0"
+  }
+}

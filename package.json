@@ -1,0 +1,34 @@
+{
+  "name": "mymart",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MyMart - Quick Commerce Grocery Delivery Platform",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "backend/cloudflare-worker"
+  ],
+  "scripts": {
+    "start": "node scripts/start-all.mjs",
+    "server": "node backend/local-server/server.mjs",
+    "seed:local": "node scripts/seed-local-db.mjs",
+    "test": "node test/run-tests.mjs",
+    "dev:admin": "npm run dev --workspace=apps/admin-dashboard",
+    "dev:mobile": "npm run start --workspace=apps/customer-app",
+    "build:admin": "npm run build --workspace=apps/admin-dashboard",
+    "build:shared": "npm run build --workspace=packages/shared",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "keywords": [
+    "quick-commerce",
+    "grocery-delivery",
+    "react-native",
+    "expo",
+    "supabase",
+    "react",
+    "vite",
+    "cloudflare-r2"
+  ],
+  "author": "MyMart Engineering",
+  "license": "MIT"
+}

@@ -1,0 +1,620 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Import compiled shared package
+const { DEFAULT_STORE_SETTINGS } = await import('../packages/shared/dist/index.js');
+
+const initialCategories = [
+  {
+    id: 'c1000000-0000-0000-0000-000000000001',
+    name: 'Fruits & Vegetables',
+    slug: 'fruits-vegetables',
+    image_url: 'https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=500&q=80',
+    description: 'Fresh farm handpicked seasonal fruits and vegetables',
+    sort_order: 1,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 5
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000002',
+    name: 'Dairy & Bakery',
+    slug: 'dairy-bakery',
+    image_url: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=500&q=80',
+    description: 'Fresh milk, butter, paneer, artisan bread and curd',
+    sort_order: 2,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 5
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000003',
+    name: 'Snacks & Munchies',
+    slug: 'snacks-munchies',
+    image_url: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=500&q=80',
+    description: 'Crispy chips, namkeen, roasted nuts and snacks',
+    sort_order: 3,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 4
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000004',
+    name: 'Cold Drinks & Juices',
+    slug: 'cold-drinks-juices',
+    image_url: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=500&q=80',
+    description: 'Refreshing sodas, natural fruit juices, iced tea',
+    sort_order: 4,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 4
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000005',
+    name: 'Atta, Rice & Dal',
+    slug: 'atta-rice-dal',
+    image_url: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80',
+    description: 'Premium chakki fresh atta, aged basmati and unpolished dals',
+    sort_order: 5,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 4
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000006',
+    name: 'Masala & Spices',
+    slug: 'masala-spices',
+    image_url: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=500&q=80',
+    description: 'Aromatic whole spices, pure blends, turmeric and cooking oils',
+    sort_order: 6,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 3
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000007',
+    name: 'Personal Care',
+    slug: 'personal-care',
+    image_url: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80',
+    description: 'Gentle handwashes, skin cleansers, oral hygiene and haircare',
+    sort_order: 7,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 3
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000008',
+    name: 'Household Essentials',
+    slug: 'household-essentials',
+    image_url: 'https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=500&q=80',
+    description: 'Detergents, surface disinfectants, dish gels and cleaners',
+    sort_order: 8,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 3
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000009',
+    name: 'Baby Care',
+    slug: 'baby-care',
+    image_url: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=500&q=80',
+    description: 'Baby diapers, soothing wipes and nutritious baby food',
+    sort_order: 9,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 3
+  },
+  {
+    id: 'c1000000-0000-0000-0000-000000000010',
+    name: 'Chocolates & Sweets',
+    slug: 'chocolates-sweets',
+    image_url: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=500&q=80',
+    description: 'Silky chocolate bars, gift packs and traditional mithai',
+    sort_order: 10,
+    is_active: true,
+    created_at: new Date().toISOString(),
+    product_count: 3
+  }
+];
+
+const initialProducts = [
+  // Fruits & Vegetables
+  {
+    id: 'p1000000-0000-0000-0000-000000000001',
+    name: 'Shimla Fresh Apples (Royal Delicious)',
+    slug: 'shimla-fresh-apples-royal-delicious',
+    sku: 'FV-APP-001',
+    brand: 'FarmFresh',
+    description: 'Crisp, sweet, and juicy Royal Delicious apples harvested from high altitude orchards in Himachal Pradesh.',
+    category_id: 'c1000000-0000-0000-0000-000000000001',
+    unit_label: '4 pcs (Approx. 500-600g)',
+    selling_price_paise: 14900,
+    mrp_paise: 18900,
+    stock_quantity: 45,
+    low_stock_threshold: 10,
+    image_urls: ['https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000002',
+    name: 'Robusta Ripe Bananas',
+    slug: 'robusta-ripe-bananas',
+    sku: 'FV-BAN-002',
+    brand: 'FarmFresh',
+    description: 'Naturally ripened high-energy golden yellow Robusta bananas.',
+    category_id: 'c1000000-0000-0000-0000-000000000001',
+    unit_label: '1 kg (Approx. 5-7 pcs)',
+    selling_price_paise: 5800,
+    mrp_paise: 7000,
+    stock_quantity: 80,
+    low_stock_threshold: 15,
+    image_urls: ['https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000003',
+    name: 'Hybrid Red Tomatoes',
+    slug: 'hybrid-red-tomatoes',
+    sku: 'FV-TOM-003',
+    brand: 'FarmFresh',
+    description: 'Plump and juicy farm-fresh red tomatoes, perfect for Indian curries, salads, and soups.',
+    category_id: 'c1000000-0000-0000-0000-000000000001',
+    unit_label: '1 kg',
+    selling_price_paise: 3800,
+    mrp_paise: 5000,
+    stock_quantity: 6,
+    low_stock_threshold: 10,
+    image_urls: ['https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000004',
+    name: 'Nashik Fresh Red Onions',
+    slug: 'nashik-fresh-red-onions',
+    sku: 'FV-ONI-004',
+    brand: 'FarmFresh',
+    description: 'Pungent, dry, and flavorful red onions sourced directly from the fertile belt of Nashik.',
+    category_id: 'c1000000-0000-0000-0000-000000000001',
+    unit_label: '1 kg',
+    selling_price_paise: 4200,
+    mrp_paise: 5500,
+    stock_quantity: 110,
+    low_stock_threshold: 20,
+    image_urls: ['https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000005',
+    name: 'Farm Fresh Potatoes (Jyoti)',
+    slug: 'farm-fresh-potatoes-jyoti',
+    sku: 'FV-POT-005',
+    brand: 'FarmFresh',
+    description: 'Thin-skinned, dirt-free Jyoti variety potatoes ideal for aloo parathas, chips, and frying.',
+    category_id: 'c1000000-0000-0000-0000-000000000001',
+    unit_label: '1 kg',
+    selling_price_paise: 3400,
+    mrp_paise: 4500,
+    stock_quantity: 95,
+    low_stock_threshold: 15,
+    image_urls: ['https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+
+  // Dairy & Bakery
+  {
+    id: 'p1000000-0000-0000-0000-000000000006',
+    name: 'Amul Taaza Homogenised Toned Milk',
+    slug: 'amul-taaza-toned-milk',
+    sku: 'DB-MIL-006',
+    brand: 'Amul',
+    description: 'Pasteurised toned milk with 3.0% fat and 8.5% SNF. Rich, hygienic, and fortified with Vitamins A & D.',
+    category_id: 'c1000000-0000-0000-0000-000000000002',
+    unit_label: '500 ml Pouch',
+    selling_price_paise: 2700,
+    mrp_paise: 2800,
+    stock_quantity: 140,
+    low_stock_threshold: 25,
+    image_urls: ['https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000007',
+    name: 'Amul Pasteurized Salted Butter',
+    slug: 'amul-salted-butter',
+    sku: 'DB-BUT-007',
+    brand: 'Amul',
+    description: 'Utterly butterly delicious creamy salted butter made from wholesome fresh cow and buffalo milk.',
+    category_id: 'c1000000-0000-0000-0000-000000000002',
+    unit_label: '100 g Pack',
+    selling_price_paise: 5600,
+    mrp_paise: 6000,
+    stock_quantity: 65,
+    low_stock_threshold: 12,
+    image_urls: ['https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000008',
+    name: 'Mother Dairy Fresh Malai Paneer',
+    slug: 'mother-dairy-fresh-malai-paneer',
+    sku: 'DB-PAN-008',
+    brand: 'Mother Dairy',
+    description: 'Soft, succulent, and rich malai cottage cheese cubes packed with pure dairy protein.',
+    category_id: 'c1000000-0000-0000-0000-000000000002',
+    unit_label: '200 g Block',
+    selling_price_paise: 9200,
+    mrp_paise: 10500,
+    stock_quantity: 4,
+    low_stock_threshold: 8,
+    image_urls: ['https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000009',
+    name: 'Britannia 100% Whole Wheat Bread',
+    slug: 'britannia-whole-wheat-bread',
+    sku: 'DB-BRD-009',
+    brand: 'Britannia',
+    description: 'Baked to perfection with 100% whole wheat flour, rich in natural dietary fibre with zero maida.',
+    category_id: 'c1000000-0000-0000-0000-000000000002',
+    unit_label: '400 g Pack',
+    selling_price_paise: 5000,
+    mrp_paise: 5500,
+    stock_quantity: 32,
+    low_stock_threshold: 10,
+    image_urls: ['https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+
+  // Snacks & Munchies
+  {
+    id: 'p1000000-0000-0000-0000-000000000010',
+    name: "Lay's India's Magic Masala Potato Chips",
+    slug: 'lays-indias-magic-masala-chips',
+    sku: 'SN-LAY-010',
+    brand: "Lay's",
+    description: 'Crispy wafer-thin potato chips sprinkled with traditional spicy Indian masalas.',
+    category_id: 'c1000000-0000-0000-0000-000000000003',
+    unit_label: '50 g Pouch',
+    selling_price_paise: 2000,
+    mrp_paise: 2000,
+    stock_quantity: 120,
+    low_stock_threshold: 20,
+    image_urls: ['https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000011',
+    name: 'Haldiram’s Nagpur Aloo Bhujia',
+    slug: 'haldirams-aloo-bhujia',
+    sku: 'SN-HAL-011',
+    brand: "Haldiram's",
+    description: 'Crispy, tangy, and spiced extruded potato & chickpea flour strings. An all-time favorite teatime snack.',
+    category_id: 'c1000000-0000-0000-0000-000000000003',
+    unit_label: '200 g Pack',
+    selling_price_paise: 5500,
+    mrp_paise: 6000,
+    stock_quantity: 75,
+    low_stock_threshold: 15,
+    image_urls: ['https://images.unsplash.com/photo-1621996346565-e3d5d6281144?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+
+  // Cold Drinks
+  {
+    id: 'p1000000-0000-0000-0000-000000000012',
+    name: 'Coca-Cola Zero Sugar Soda Can',
+    slug: 'coca-cola-zero-sugar-can',
+    sku: 'CD-COK-012',
+    brand: 'Coca-Cola',
+    description: 'Great Coca-Cola taste with zero calories and zero sugar. Serve chilled.',
+    category_id: 'c1000000-0000-0000-0000-000000000004',
+    unit_label: '300 ml Can',
+    selling_price_paise: 4000,
+    mrp_paise: 4000,
+    stock_quantity: 90,
+    low_stock_threshold: 15,
+    image_urls: ['https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+
+  // Atta, Rice & Dal
+  {
+    id: 'p1000000-0000-0000-0000-000000000013',
+    name: 'Aashirvaad Shudh Chakki Whole Wheat Atta',
+    slug: 'aashirvaad-shudh-chakki-atta-5kg',
+    sku: 'AR-AAS-013',
+    brand: 'Aashirvaad',
+    description: 'Ground from heavy grains, golden amber in colour and hard in bite. Makes rotis that stay soft for hours.',
+    category_id: 'c1000000-0000-0000-0000-000000000005',
+    unit_label: '5 kg Bag',
+    selling_price_paise: 24500,
+    mrp_paise: 27500,
+    stock_quantity: 40,
+    low_stock_threshold: 8,
+    image_urls: ['https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000014',
+    name: 'Daawat Rozana Super Basmati Rice',
+    slug: 'daawat-rozana-super-basmati-rice',
+    sku: 'AR-DAA-014',
+    brand: 'Daawat',
+    description: 'Long and aromatic pearly white basmati grains aged to perfection for biryani and daily meals.',
+    category_id: 'c1000000-0000-0000-0000-000000000005',
+    unit_label: '1 kg Pouch',
+    selling_price_paise: 9500,
+    mrp_paise: 12000,
+    stock_quantity: 60,
+    low_stock_threshold: 12,
+    image_urls: ['https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+  {
+    id: 'p1000000-0000-0000-0000-000000000015',
+    name: 'Tata Sampann Unpolished Toor Dal',
+    slug: 'tata-sampann-unpolished-toor-dal',
+    sku: 'AR-TAT-015',
+    brand: 'Tata Sampann',
+    description: '100% unpolished yellow arhar toor dal, naturally enriched with protein and essential nutrients.',
+    category_id: 'c1000000-0000-0000-0000-000000000005',
+    unit_label: '1 kg Pack',
+    selling_price_paise: 16500,
+    mrp_paise: 19500,
+    stock_quantity: 35,
+    low_stock_threshold: 10,
+    image_urls: ['https://images.unsplash.com/photo-1585994192701-f1a505c817ee?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+
+  // Masala & Spices
+  {
+    id: 'p1000000-0000-0000-0000-000000000016',
+    name: 'Everest Tikhalal Chilli Powder',
+    slug: 'everest-tikhalal-chilli-powder',
+    sku: 'MS-EVE-016',
+    brand: 'Everest',
+    description: 'Rich red color and spicy fiery punch made from chosen stalks of Guntur chillies.',
+    category_id: 'c1000000-0000-0000-0000-000000000006',
+    unit_label: '200 g Box',
+    selling_price_paise: 8800,
+    mrp_paise: 9800,
+    stock_quantity: 50,
+    low_stock_threshold: 10,
+    image_urls: ['https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: false,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  },
+
+  // Chocolates & Sweets
+  {
+    id: 'p1000000-0000-0000-0000-000000000017',
+    name: 'Cadbury Dairy Milk Silk Chocolate Bar',
+    slug: 'cadbury-dairy-milk-silk-bar',
+    sku: 'CS-CAD-017',
+    brand: 'Cadbury',
+    description: 'Indulge in the melt-in-mouth creamy silky goodness of premium cocoa milk chocolate.',
+    category_id: 'c1000000-0000-0000-0000-000000000010',
+    unit_label: '150 g Bar',
+    selling_price_paise: 17500,
+    mrp_paise: 18000,
+    stock_quantity: 0, // Out of stock to test filter
+    low_stock_threshold: 10,
+    image_urls: ['https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=600&q=80'],
+    is_active: true,
+    is_featured: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  }
+];
+
+const initialOrders = [
+  {
+    id: 'ord-1718000001',
+    order_number: 'MYM-20261122-1042',
+    user_id: 'cust-demo-1',
+    customer_name: 'Rahul Sharma',
+    customer_phone: '+919876543210',
+    address_snapshot: {
+      id: 'addr-001',
+      user_id: 'cust-demo-1',
+      recipient_name: 'Rahul Sharma',
+      phone: '+919876543210',
+      flat_house: 'Flat 402, Prestige Palms',
+      street_address: '12th Main Road, Indiranagar',
+      area_locality: 'HAL 2nd Stage',
+      landmark: 'Near BDA Complex',
+      city: 'Bengaluru',
+      state: 'Karnataka',
+      pincode: '560038',
+      is_default: true,
+      created_at: new Date(Date.now() - 3600000).toISOString()
+    },
+    subtotal_paise: 38800,
+    delivery_fee_paise: 0,
+    discount_paise: 0,
+    total_paise: 38800,
+    payment_method: 'COD',
+    payment_status: 'pending',
+    order_status: 'out_for_delivery',
+    is_stock_restored: false,
+    cancel_reason: null,
+    items: [
+      {
+        id: 'item-001',
+        order_id: 'ord-1718000001',
+        product_id: 'p1000000-0000-0000-0000-000000000001',
+        product_name: 'Shimla Fresh Apples (Royal Delicious)',
+        product_image_url: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80',
+        unit_label: '4 pcs (Approx. 500-600g)',
+        quantity: 2,
+        price_paise: 14900,
+        subtotal_paise: 29800
+      },
+      {
+        id: 'item-002',
+        order_id: 'ord-1718000001',
+        product_id: 'p1000000-0000-0000-0000-000000000008',
+        product_name: 'Mother Dairy Fresh Malai Paneer',
+        product_image_url: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=600&q=80',
+        unit_label: '200 g Block',
+        quantity: 1,
+        price_paise: 9200,
+        subtotal_paise: 9200
+      }
+    ],
+    created_at: new Date(Date.now() - 3600000).toISOString(),
+    updated_at: new Date(Date.now() - 1800000).toISOString()
+  },
+  {
+    id: 'ord-1718000002',
+    order_number: 'MYM-20261122-1043',
+    user_id: 'cust-demo-2',
+    customer_name: 'Pooja Verma',
+    customer_phone: '+919812345678',
+    address_snapshot: {
+      id: 'addr-002',
+      user_id: 'cust-demo-2',
+      recipient_name: 'Pooja Verma',
+      phone: '+919812345678',
+      flat_house: 'Villa 12, Green Glen Layout',
+      street_address: 'Outer Ring Road, Bellandur',
+      area_locality: 'Bellandur',
+      landmark: 'Behind Central Mall',
+      city: 'Bengaluru',
+      state: 'Karnataka',
+      pincode: '560068',
+      is_default: true,
+      created_at: new Date(Date.now() - 7200000).toISOString()
+    },
+    subtotal_paise: 24500,
+    delivery_fee_paise: 0,
+    discount_paise: 0,
+    total_paise: 24500,
+    payment_method: 'COD',
+    payment_status: 'paid',
+    order_status: 'delivered',
+    is_stock_restored: false,
+    cancel_reason: null,
+    items: [
+      {
+        id: 'item-003',
+        order_id: 'ord-1718000002',
+        product_id: 'p1000000-0000-0000-0000-000000000013',
+        product_name: 'Aashirvaad Shudh Chakki Whole Wheat Atta',
+        product_image_url: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80',
+        unit_label: '5 kg Bag',
+        quantity: 1,
+        price_paise: 24500,
+        subtotal_paise: 24500
+      }
+    ],
+    created_at: new Date(Date.now() - 7200000).toISOString(),
+    updated_at: new Date(Date.now() - 3600000).toISOString()
+  }
+];
+
+const initialPromotions = [
+  {
+    id: 'promo-1',
+    title: 'Super Saver Week',
+    subtitle: 'Get up to 30% off on fresh fruits and staples',
+    banner_url: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80',
+    link_url: '/category/fruits-vegetables',
+    is_active: true,
+    sort_order: 1
+  },
+  {
+    id: 'promo-2',
+    title: 'Dairy Delights Daily',
+    subtitle: 'Farm fresh milk, butter & paneer at your doorstep',
+    banner_url: 'https://images.unsplash.com/photo-1528750997573-59b89d56f4f7?auto=format&fit=crop&w=800&q=80',
+    link_url: '/category/dairy-bakery',
+    is_active: true,
+    sort_order: 2
+  }
+];
+
+const database = {
+  store_settings: {
+    id: 'a0000000-0000-0000-0000-000000000001',
+    ...DEFAULT_STORE_SETTINGS,
+    updated_at: new Date().toISOString()
+  },
+  categories: initialCategories,
+  products: initialProducts,
+  orders: initialOrders,
+  promotions: initialPromotions,
+  users: [
+    {
+      id: 'admin-001',
+      email: 'admin@mymart.com',
+      full_name: 'Store Owner',
+      role: 'admin',
+      phone: '+919999999999'
+    },
+    {
+      id: 'cust-demo-1',
+      email: 'customer@mymart.com',
+      full_name: 'Rahul Sharma',
+      role: 'customer',
+      phone: '+919876543210'
+    }
+  ]
+};
+
+const dbPath = path.resolve(__dirname, '../backend/local-server/data/store.json');
+fs.writeFileSync(dbPath, JSON.stringify(database, null, 2), 'utf-8');
+console.log('Successfully written initial database to', dbPath);
