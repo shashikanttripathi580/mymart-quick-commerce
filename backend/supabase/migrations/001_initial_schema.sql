@@ -232,9 +232,10 @@ SECURITY DEFINER
 SET search_path = public
 AS $$
 BEGIN
-  -- If role is changing, ensure current actor is already an admin
+  -- If role is changing, ensure authenticated clients cannot elevate their own role.
+  -- auth.uid() IS NULL represents database administrator/service_role/migrations.
   IF OLD.role IS DISTINCT FROM NEW.role THEN
-    IF NOT public.is_admin(auth.uid()) THEN
+    IF auth.uid() IS NOT NULL AND NOT public.is_admin(auth.uid()) THEN
       RAISE EXCEPTION 'Unauthorized: Only an existing admin can modify user roles';
     END IF;
   END IF;
