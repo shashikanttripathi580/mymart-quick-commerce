@@ -18,18 +18,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install and Build Shared Package
         run: |
           npm --prefix packages/shared install
-          npm --prefix apps/admin-dashboard install
+          npm run build:shared
 
-      - name: Build Shared Package
-        run: npm run build:shared
+      - name: Install and Build Admin Dashboard
+        run: |
+          npm --prefix apps/admin-dashboard install
+          npm run build:admin
 
       - name: Run Test Suite (59 assertions)
         run: npm test
-
-      - name: Build Admin Dashboard & Customer Storefront
-        run: npm run build:admin
