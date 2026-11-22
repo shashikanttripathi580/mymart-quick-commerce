@@ -13,10 +13,11 @@
     "server": "node backend/local-server/server.mjs",
     "seed:local": "node scripts/seed-local-db.mjs",
     "test": "node test/run-tests.mjs",
-    "dev:admin": "npm run dev --workspace=apps/admin-dashboard",
+    "build": "npm --prefix packages/shared run build && npm --prefix apps/admin-dashboard run build",
+    "build:admin": "npm --prefix apps/admin-dashboard run build",
+    "build:shared": "npm --prefix packages/shared run build",
+    "dev:admin": "npm --prefix apps/admin-dashboard run dev",
     "dev:mobile": "npm run start --workspace=apps/customer-app",
-    "build:admin": "npm run build --workspace=apps/admin-dashboard",
-    "build:shared": "npm run build --workspace=packages/shared",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },
   "keywords": [

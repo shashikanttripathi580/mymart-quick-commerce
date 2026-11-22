@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build:shared && npm run build:admin",
+  "buildCommand": "npm run build",
   "outputDirectory": "apps/admin-dashboard/dist",
   "framework": "vite",
   "rewrites": [

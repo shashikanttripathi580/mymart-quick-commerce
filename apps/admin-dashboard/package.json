@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "prebuild": "npm --prefix ../../packages/shared run build || true",
+    "build:shared": "npm --prefix ../../packages/shared run build",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
