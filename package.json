@@ -13,7 +13,7 @@
     "server": "node backend/local-server/server.mjs",
     "seed:local": "node scripts/seed-local-db.mjs",
     "test": "node test/run-tests.mjs",
-    "build": "npm --prefix packages/shared run build && npm --prefix apps/admin-dashboard run build",
+    "build": "npm --prefix packages/shared run build && npm --prefix apps/admin-dashboard run build && node scripts/copy-dist.mjs",
     "build:admin": "npm --prefix apps/admin-dashboard run build",
     "build:shared": "npm --prefix packages/shared run build",
     "dev:admin": "npm --prefix apps/admin-dashboard run dev",
